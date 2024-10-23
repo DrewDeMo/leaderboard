@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './index.css'
 import { AuthProvider } from './contexts/AuthContext'
 import { PostsProvider } from './contexts/PostsContext'
@@ -17,13 +17,17 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <PostsProvider>
           <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              <Route path="admin/login" element={<AdminLogin />} />
-              <Route path="admin" element={<AdminDashboard />}>
-                <Route path="posts" element={<AdminPosts />} />
-                <Route path="leaderboard" element={<AdminLeaderboard />} />
+            <Route element={<App />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/admin">
+                <Route path="login" element={<AdminLogin />} />
+                <Route path="" element={<AdminDashboard />}>
+                  <Route index element={<Navigate to="posts" replace />} />
+                  <Route path="posts" element={<AdminPosts />} />
+                  <Route path="leaderboard" element={<AdminLeaderboard />} />
+                </Route>
               </Route>
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Route>
           </Routes>
         </PostsProvider>
