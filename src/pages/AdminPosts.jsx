@@ -81,7 +81,7 @@ export default function AdminPosts() {
     };
 
     const inputClasses = "block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-700 transition duration-150 ease-in-out shadow-sm hover:border-tcl-orange-300 focus:border-tcl-orange-500 focus:ring-2 focus:ring-tcl-orange-200 focus:ring-opacity-50 focus:outline-none";
-    const buttonClasses = "px-4 py-3 text-sm font-medium text-white bg-tcl-orange-500 rounded-lg hover:bg-tcl-orange-600 transition-colors shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed";
+    const buttonClasses = "px-4 py-3 text-sm font-medium text-white bg-tcl-orange-700 rounded-lg hover:bg-tcl-orange-800 transition-colors shadow-sm hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed";
 
     return (
         <motion.div
@@ -108,25 +108,31 @@ export default function AdminPosts() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: 20 }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 border border-gray-200"
+                                    className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 border border-gray-200 group"
                                 >
                                     <div>
-                                        <h3 className="font-medium text-gray-900">{post.title}</h3>
+                                        <h3 className="font-medium text-gray-900 group-hover:text-tcl-orange-700 transition-colors">
+                                            {post.title}
+                                        </h3>
                                         <p className="text-sm text-gray-500">{post.date}</p>
                                     </div>
                                     <div className="flex space-x-3">
-                                        <button
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                             onClick={() => setEditingPost(post)}
-                                            className="text-sm font-medium text-tcl-orange-500 hover:text-tcl-orange-600 transition-colors"
+                                            className="text-sm font-medium text-tcl-orange-700 hover:text-tcl-orange-800 transition-colors"
                                         >
                                             Edit
-                                        </button>
-                                        <button
+                                        </motion.button>
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                             onClick={() => deletePost(post.id)}
                                             className="text-sm font-medium text-red-500 hover:text-red-600 transition-colors"
                                         >
                                             Delete
-                                        </button>
+                                        </motion.button>
                                     </div>
                                 </motion.div>
                             ))}
@@ -142,7 +148,7 @@ export default function AdminPosts() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="bg-white shadow-sm rounded-lg p-6"
+                        className="bg-white shadow-sm rounded-lg p-6 border border-gray-200"
                     >
                         <h3 className="text-lg font-medium text-gray-900 mb-4">Edit Challenge</h3>
                         <div className="space-y-4">
@@ -194,36 +200,45 @@ export default function AdminPosts() {
                                                 value={hint}
                                                 onChange={(e) => updateHint(index, e.target.value, true)}
                                                 className={inputClasses}
+                                                placeholder={`Hint ${index + 1}`}
                                             />
-                                            <button
+                                            <motion.button
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
                                                 onClick={() => removeHint(index, true)}
                                                 className="text-red-500 hover:text-red-600 transition-colors"
                                             >
                                                 Remove
-                                            </button>
+                                            </motion.button>
                                         </motion.div>
                                     ))}
                                 </AnimatePresence>
-                                <button
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     onClick={() => addHint(true)}
-                                    className="text-sm font-medium text-tcl-orange-500 hover:text-tcl-orange-600 transition-colors"
+                                    className="text-sm font-medium text-tcl-orange-700 hover:text-tcl-orange-800 transition-colors"
                                 >
                                     Add Hint
-                                </button>
+                                </motion.button>
                             </div>
                             <div className="flex justify-end space-x-3">
-                                <button
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     onClick={() => setEditingPost(null)}
                                     className="px-4 py-2 text-sm text-gray-700 hover:text-gray-900 transition-colors"
                                 >
                                     Cancel
-                                </button>
-                                <button
+                                </motion.button>
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
                                     onClick={handleUpdatePost}
                                     className={buttonClasses}
                                 >
                                     Save Changes
-                                </button>
+                                </motion.button>
                             </div>
                         </div>
                     </motion.div>
@@ -235,7 +250,7 @@ export default function AdminPosts() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-white shadow-sm rounded-lg p-6"
+                    className="bg-white shadow-sm rounded-lg p-6 border border-gray-200"
                 >
                     <h3 className="text-lg font-medium text-gray-900 mb-4">New Challenge</h3>
                     <div className="space-y-4">
@@ -287,30 +302,37 @@ export default function AdminPosts() {
                                             value={hint}
                                             onChange={(e) => updateHint(index, e.target.value)}
                                             className={inputClasses}
+                                            placeholder={`Hint ${index + 1}`}
                                         />
-                                        <button
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                             onClick={() => removeHint(index)}
                                             className="text-red-500 hover:text-red-600 transition-colors"
                                         >
                                             Remove
-                                        </button>
+                                        </motion.button>
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
-                            <button
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
                                 onClick={() => addHint(false)}
-                                className="text-sm font-medium text-tcl-orange-500 hover:text-tcl-orange-600 transition-colors"
+                                className="text-sm font-medium text-tcl-orange-700 hover:text-tcl-orange-800 transition-colors"
                             >
                                 Add Hint
-                            </button>
+                            </motion.button>
                         </div>
-                        <button
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
                             onClick={handleAddPost}
                             disabled={!newPost.title || !newPost.description}
                             className={buttonClasses}
                         >
                             Add Challenge
-                        </button>
+                        </motion.button>
                     </div>
                 </motion.div>
             )}

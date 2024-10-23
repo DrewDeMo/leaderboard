@@ -28,7 +28,7 @@ export default function AdminLogin() {
                         initial={{ scale: 0.5, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.5 }}
-                        className="w-16 h-16 rounded-full bg-tcl-orange-500 flex items-center justify-center shadow-lg"
+                        className="w-16 h-16 rounded-full bg-tcl-orange-700 flex items-center justify-center shadow-lg hover:bg-tcl-orange-800 transition-colors"
                     >
                         <span className="text-2xl font-bold text-white">TCL</span>
                     </motion.div>
