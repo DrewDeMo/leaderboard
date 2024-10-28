@@ -16,16 +16,12 @@ export default function HomePage() {
 
     const getAvatarColor = (name) => {
         const colors = {
-            'Marketing Team A': 'bg-blue-500',
-            'Creative Squad': 'bg-green-500',
-            'Digital Innovators': 'bg-purple-500',
-            'Brand Champions': 'bg-pink-500',
-            'Social Media Stars': 'bg-yellow-500',
-            'Content Creators': 'bg-red-500',
-            'Strategy Team': 'bg-indigo-500',
-            'Analytics Group': 'bg-cyan-500',
-            'Campaign Experts': 'bg-orange-500',
-            'Design Team': 'bg-teal-500'
+            'Wicked Wheaties': 'bg-blue-500',
+            'Artificially Intelligent': 'bg-green-500',
+            'Falls to the Wall': 'bg-purple-500',
+            'Harvest Hustlers': 'bg-pink-500',
+            'Not the Droids You\'re Looking For': 'bg-yellow-500',
+            'Nutmeg Hustlers': 'bg-red-500'
         };
         return colors[name] || 'bg-gray-500';
     };
@@ -52,7 +48,7 @@ export default function HomePage() {
                             <div className="w-10 h-10 sm:w-[60px] sm:h-[60px] text-[#cc5500] flex items-center justify-center flex-shrink-0 transition-shadow hover:shadow-md">
                                 <Logo />
                             </div>
-                            <h1 className="text-lg sm:text-2xl font-semibold text-gray-900">Scavenger Hunt</h1>
+                            <h1 className="text-lg sm:text-2xl font-semibold text-gray-900">TCL Scavenger Hunt 2024</h1>
                         </div>
                         <div className="flex items-center gap-3">
                             <Link
@@ -107,7 +103,7 @@ export default function HomePage() {
                                                 <span className="text-sm text-gray-500">{currentPost.time}</span>
                                             </div>
                                         </div>
-                                        <p className="text-gray-600 leading-relaxed mb-6 whitespace-pre-wrap">{currentPost.description}</p>
+                                        <p className="text-gray-600 leading-relaxed mb-6">{currentPost.description}</p>
                                         <div className="bg-orange-50 rounded-xl p-5 mb-6 border border-orange-100">
                                             <h3 className="text-lg font-medium text-gray-900 mb-4">Helpful Tips:</h3>
                                             <ol className="list-decimal pl-4 space-y-2.5">
@@ -178,8 +174,7 @@ export default function HomePage() {
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: index * 0.1 }}
-                                                className={`flex items-center justify-between p-3 rounded-xl border ${index < 3 ? 'bg-orange-50 border-orange-100' : 'border-gray-100'
-                                                    }`}
+                                                className={`flex items-center justify-between p-3 rounded-xl border ${index < 3 ? 'bg-orange-50 border-orange-100' : 'border-gray-100'}`}
                                             >
                                                 <div className="flex items-center gap-3">
                                                     <motion.div
@@ -214,7 +209,7 @@ export default function HomePage() {
             <footer className="bg-white border-t border-gray-100 mt-auto">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="text-center text-sm text-gray-500">
-                        © {new Date().getFullYear()} TCL Scavenger Hunt. All rights reserved.
+                        © {new Date().getFullYear()} TCL Scavenger Hunt 2024. All rights reserved.
                     </div>
                 </div>
             </footer>
