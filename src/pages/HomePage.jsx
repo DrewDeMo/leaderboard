@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { usePosts } from '../contexts/PostsContext';
+import Logo from '../components/Logo';
 
 export default function HomePage() {
     const [currentPostIndex, setCurrentPostIndex] = useState(0);
@@ -48,11 +49,10 @@ export default function HomePage() {
                 <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-4">
-                            <div
-                                className="w-10 h-10 sm:w-[60px] sm:h-[60px] rounded-full bg-[#cc5500] flex items-center justify-center flex-shrink-0 transition-shadow hover:shadow-md"
-                                style={{ minWidth: '40px' }}
-                            />
-                            <h1 className="text-lg sm:text-2xl font-semibold text-gray-900">TCL Scavenger Hunt</h1>
+                            <div className="w-10 h-10 sm:w-[60px] sm:h-[60px] text-[#cc5500] flex items-center justify-center flex-shrink-0 transition-shadow hover:shadow-md">
+                                <Logo />
+                            </div>
+                            <h1 className="text-lg sm:text-2xl font-semibold text-gray-900">Scavenger Hunt</h1>
                         </div>
                         <div className="flex items-center gap-3">
                             <Link
@@ -107,7 +107,7 @@ export default function HomePage() {
                                                 <span className="text-sm text-gray-500">{currentPost.time}</span>
                                             </div>
                                         </div>
-                                        <p className="text-gray-600 leading-relaxed mb-6">{currentPost.description}</p>
+                                        <p className="text-gray-600 leading-relaxed mb-6 whitespace-pre-wrap">{currentPost.description}</p>
                                         <div className="bg-orange-50 rounded-xl p-5 mb-6 border border-orange-100">
                                             <h3 className="text-lg font-medium text-gray-900 mb-4">Helpful Tips:</h3>
                                             <ol className="list-decimal pl-4 space-y-2.5">

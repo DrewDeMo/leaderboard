@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
+// Shared initial posts that all users will see
 const initialPosts = [
     {
         id: 1,
@@ -45,25 +46,30 @@ const initialPosts = [
     }
 ];
 
+// Updated leaderboard with actual teams
 const initialLeaderboard = [
-    { id: 1, name: 'Marketing Team A', score: 950 },
-    { id: 2, name: 'Creative Squad', score: 875 },
-    { id: 3, name: 'Digital Innovators', score: 820 },
-    { id: 4, name: 'Brand Champions', score: 780 },
-    { id: 5, name: 'Social Media Stars', score: 750 },
-    { id: 6, name: 'Content Creators', score: 720 },
-    { id: 7, name: 'Strategy Team', score: 690 },
-    { id: 8, name: 'Analytics Group', score: 650 },
-    { id: 9, name: 'Campaign Experts', score: 620 },
-    { id: 10, name: 'Design Team', score: 600 }
+    { id: 1, name: 'Wicked Wheaties', score: 0, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
+    { id: 2, name: 'Artificially Intelligent', score: 0, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 3, name: 'Falls to the Wall', score: 0, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
+    { id: 4, name: 'Harvest Hustlers', score: 0, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
+    { id: 5, name: 'Not the Droids You\'re Looking For', score: 0, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
+    { id: 6, name: 'Nutmeg Hustlers', score: 0, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
 ];
 
 const PostsContext = createContext();
 
 export function PostsProvider({ children }) {
+    // Initialize posts with a combination of localStorage and initial posts
     const [posts, setPosts] = useState(() => {
         const savedPosts = localStorage.getItem('posts');
-        return savedPosts ? JSON.parse(savedPosts) : initialPosts;
+        if (savedPosts) {
+            const parsedPosts = JSON.parse(savedPosts);
+            // Combine saved posts with initial posts, removing duplicates by ID
+            const combinedPosts = [...initialPosts, ...parsedPosts];
+            const uniquePosts = Array.from(new Map(combinedPosts.map(post => [post.id, post])).values());
+            return uniquePosts;
+        }
+        return initialPosts;
     });
 
     const [leaderboard, setLeaderboard] = useState(() => {
@@ -83,7 +89,7 @@ export function PostsProvider({ children }) {
         setPosts(prevPosts => {
             const post = {
                 ...newPost,
-                id: prevPosts.length + 1,
+                id: Date.now(), // Use timestamp as ID to ensure uniqueness
                 author: 'Danielle',
                 date: new Date().toLocaleDateString('en-CA')
             };
@@ -102,7 +108,13 @@ export function PostsProvider({ children }) {
     };
 
     const deletePost = (postId) => {
-        setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+        setPosts(prevPosts => {
+            // Don't allow deletion of initial posts
+            if (initialPosts.some(post => post.id === postId)) {
+                return prevPosts;
+            }
+            return prevPosts.filter(post => post.id !== postId);
+        });
     };
 
     const addLeaderboardEntry = (entry) => {
