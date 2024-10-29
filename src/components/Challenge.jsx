@@ -5,7 +5,17 @@ export default function Challenge() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/data/challenges.json')
+        // Add timestamp to URL to prevent caching
+        const timestamp = new Date().getTime();
+        fetch(`/data/challenges.json?t=${timestamp}`)
+            .then(response => {
+                // Force cache revalidation
+                const fresh = response.clone();
+                caches.delete('/data/challenges.json').then(() => {
+                    return fresh;
+                });
+                return response;
+            })
             .then(response => response.json())
             .then(data => {
                 setChallenges(data.challenges);

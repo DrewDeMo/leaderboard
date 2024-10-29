@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { usePosts } from '../contexts/PostsContext';
 import Logo from '../components/Logo';
 
 export default function HomePage() {
-    const [currentPostIndex, setCurrentPostIndex] = useState(0);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [showAllPlayers, setShowAllPlayers] = useState(false);
     const { posts, leaderboard } = usePosts();
@@ -28,15 +26,15 @@ export default function HomePage() {
 
     const displayedLeaderboard = showAllPlayers ? leaderboard : leaderboard.slice(0, 5);
 
-    const handleNextPost = () => {
-        setCurrentPostIndex((prev) => (prev + 1) % posts.length);
-    };
+    if (!posts.length) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <p className="text-lg text-gray-600">Loading challenges...</p>
+            </div>
+        );
+    }
 
-    const handlePrevPost = () => {
-        setCurrentPostIndex((prev) => (prev - 1 + posts.length) % posts.length);
-    };
-
-    const currentPost = posts[currentPostIndex];
+    const currentPost = posts[0]; // Always show the first post since we only have one
 
     return (
         <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark' : ''} bg-gray-50`}>
@@ -50,21 +48,13 @@ export default function HomePage() {
                             </div>
                             <h1 className="text-lg sm:text-2xl font-semibold text-gray-900">TCL Scavenger Hunt 2024</h1>
                         </div>
-                        <div className="flex items-center gap-3">
-                            <Link
-                                to="/admin"
-                                className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-150 ease-in-out rounded-full border border-gray-200 hover:border-gray-300 bg-white shadow-sm hover:shadow"
-                            >
-                                Login
-                            </Link>
-                            <button
-                                onClick={() => setIsDarkMode(!isDarkMode)}
-                                className="p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-gray-900 transition-all duration-150 ease-in-out"
-                                aria-label="Toggle dark mode"
-                            >
-                                {isDarkMode ? '🌞' : '🌙'}
-                            </button>
-                        </div>
+                        <button
+                            onClick={() => setIsDarkMode(!isDarkMode)}
+                            className="p-2 rounded-full hover:bg-gray-100 text-gray-600 hover:text-gray-900 transition-all duration-150 ease-in-out"
+                            aria-label="Toggle dark mode"
+                        >
+                            {isDarkMode ? '🌞' : '🌙'}
+                        </button>
                     </div>
                 </nav>
             </header>
@@ -120,27 +110,6 @@ export default function HomePage() {
                                                 ))}
                                             </ol>
                                         </div>
-                                    </div>
-                                    <div className="flex justify-between items-center px-6 py-4 bg-gray-50 border-t border-gray-100">
-                                        <motion.button
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            onClick={handlePrevPost}
-                                            className="text-sm font-medium text-gray-600 hover:text-[#cc5500] transition-colors duration-150"
-                                        >
-                                            ← Previous Challenge
-                                        </motion.button>
-                                        <span className="text-sm text-gray-500">
-                                            Challenge {currentPostIndex + 1} of {posts.length}
-                                        </span>
-                                        <motion.button
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            onClick={handleNextPost}
-                                            className="text-sm font-medium text-gray-600 hover:text-[#cc5500] transition-colors duration-150"
-                                        >
-                                            Next Challenge →
-                                        </motion.button>
                                     </div>
                                 </motion.div>
                             </AnimatePresence>
