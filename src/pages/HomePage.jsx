@@ -36,15 +36,15 @@ export default function HomePage() {
 
     const currentPost = posts[currentPostIndex];
 
-    const goToNextPost = () => {
-        if (currentPostIndex < totalPosts - 1) {
-            setCurrentPostIndex(currentPostIndex + 1);
+    const goToNewerPost = () => {
+        if (currentPostIndex > 0) {
+            setCurrentPostIndex(currentPostIndex - 1);
         }
     };
 
-    const goToPreviousPost = () => {
-        if (currentPostIndex > 0) {
-            setCurrentPostIndex(currentPostIndex - 1);
+    const goToOlderPost = () => {
+        if (currentPostIndex < totalPosts - 1) {
+            setCurrentPostIndex(currentPostIndex + 1);
         }
     };
 
@@ -154,23 +154,23 @@ export default function HomePage() {
                                         {/* Navigation Buttons */}
                                         <div className="flex justify-between items-center mt-6">
                                             <button
-                                                onClick={goToPreviousPost}
-                                                className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === 0
-                                                        ? 'text-gray-300 cursor-not-allowed'
-                                                        : 'text-blue-500 hover:bg-blue-100'
-                                                    }`}
-                                                disabled={currentPostIndex === 0}
-                                            >
-                                                <span>←</span>
-                                                <span>Previous Post</span>
-                                            </button>
-                                            <button
-                                                onClick={goToNextPost}
+                                                onClick={goToOlderPost}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === totalPosts - 1
                                                         ? 'text-gray-300 cursor-not-allowed'
                                                         : 'text-blue-500 hover:bg-blue-100'
                                                     }`}
                                                 disabled={currentPostIndex === totalPosts - 1}
+                                            >
+                                                <span>←</span>
+                                                <span>Previous Post</span>
+                                            </button>
+                                            <button
+                                                onClick={goToNewerPost}
+                                                className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === 0
+                                                        ? 'text-gray-300 cursor-not-allowed'
+                                                        : 'text-blue-500 hover:bg-blue-100'
+                                                    }`}
+                                                disabled={currentPostIndex === 0}
                                             >
                                                 <span>Next Post</span>
                                                 <span>→</span>

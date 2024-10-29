@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-// Static posts array with both challenges
+// Static posts array with both challenges - newest first
 const staticPosts = [
     {
         id: 2,
