@@ -5,7 +5,6 @@ import Logo from '../components/Logo';
 
 export default function HomePage() {
     const [isDarkMode, setIsDarkMode] = useState(false);
-    const [showAllPlayers, setShowAllPlayers] = useState(false);
     const { posts, currentPostIndex, setCurrentPostIndex, leaderboard, totalPosts } = usePosts();
 
     const getInitials = (name) => {
@@ -61,7 +60,6 @@ export default function HomePage() {
         };
     };
 
-    const displayedLeaderboard = showAllPlayers ? leaderboard : leaderboard.slice(0, 5);
     const allScores = leaderboard.map(player => player.score);
 
     if (!posts.length) {
@@ -194,8 +192,8 @@ export default function HomePage() {
                                             <button
                                                 onClick={goToOlderPost}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === totalPosts - 1
-                                                        ? 'text-gray-300 cursor-not-allowed'
-                                                        : 'text-blue-500 hover:bg-blue-100'
+                                                    ? 'text-gray-300 cursor-not-allowed'
+                                                    : 'text-blue-500 hover:bg-blue-100'
                                                     }`}
                                                 disabled={currentPostIndex === totalPosts - 1}
                                             >
@@ -205,8 +203,8 @@ export default function HomePage() {
                                             <button
                                                 onClick={goToNewerPost}
                                                 className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === 0
-                                                        ? 'text-gray-300 cursor-not-allowed'
-                                                        : 'text-blue-500 hover:bg-blue-100'
+                                                    ? 'text-gray-300 cursor-not-allowed'
+                                                    : 'text-blue-500 hover:bg-blue-100'
                                                     }`}
                                                 disabled={currentPostIndex === 0}
                                             >
@@ -226,22 +224,12 @@ export default function HomePage() {
                                 className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
                             >
                                 <div className="p-6">
-                                    <div className="flex justify-between items-center mb-6">
-                                        <h2 className="text-xl font-bold text-gray-900 flex items-center">
-                                            <span className="mr-2">🏆</span> Top Performers
-                                        </h2>
-                                        <motion.button
-                                            whileHover={{ scale: 1.02 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            onClick={() => setShowAllPlayers(!showAllPlayers)}
-                                            className="text-[#cc5500] hover:text-orange-600 text-sm font-medium"
-                                        >
-                                            {showAllPlayers ? 'Show Less' : 'View All'}
-                                        </motion.button>
-                                    </div>
+                                    <h2 className="text-xl font-bold text-gray-900 flex items-center mb-6">
+                                        <span className="mr-2">🏆</span> Scoreboard
+                                    </h2>
 
                                     <div className="space-y-3">
-                                        {displayedLeaderboard.map((player, index) => {
+                                        {leaderboard.map((player, index) => {
                                             const medalInfo = getMedalInfo(index, player.score, allScores);
                                             return (
                                                 <motion.div
