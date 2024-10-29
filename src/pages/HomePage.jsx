@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 export default function HomePage() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [showAllPlayers, setShowAllPlayers] = useState(false);
-    const { posts, leaderboard } = usePosts();
+    const { posts, currentPostIndex, setCurrentPostIndex, leaderboard, totalPosts } = usePosts();
 
     const getInitials = (name) => {
         return name.split(' ').map(word => word[0]).join('');
@@ -34,7 +34,19 @@ export default function HomePage() {
         );
     }
 
-    const currentPost = posts[0];
+    const currentPost = posts[currentPostIndex];
+
+    const goToNextPost = () => {
+        if (currentPostIndex < totalPosts - 1) {
+            setCurrentPostIndex(currentPostIndex + 1);
+        }
+    };
+
+    const goToPreviousPost = () => {
+        if (currentPostIndex > 0) {
+            setCurrentPostIndex(currentPostIndex - 1);
+        }
+    };
 
     return (
         <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark' : ''} bg-gray-50`}>
@@ -137,6 +149,32 @@ export default function HomePage() {
                                                 <span className="mr-2">⏰</span>
                                                 Submissions are due by {currentPost.dueTime}. Happy snapping! 🍁🌟
                                             </p>
+                                        </div>
+
+                                        {/* Navigation Buttons */}
+                                        <div className="flex justify-between items-center mt-6">
+                                            <button
+                                                onClick={goToPreviousPost}
+                                                className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === 0
+                                                        ? 'text-gray-300 cursor-not-allowed'
+                                                        : 'text-blue-500 hover:bg-blue-100'
+                                                    }`}
+                                                disabled={currentPostIndex === 0}
+                                            >
+                                                <span>←</span>
+                                                <span>Previous Post</span>
+                                            </button>
+                                            <button
+                                                onClick={goToNextPost}
+                                                className={`flex items-center gap-2 px-4 py-2 rounded ${currentPostIndex === totalPosts - 1
+                                                        ? 'text-gray-300 cursor-not-allowed'
+                                                        : 'text-blue-500 hover:bg-blue-100'
+                                                    }`}
+                                                disabled={currentPostIndex === totalPosts - 1}
+                                            >
+                                                <span>Next Post</span>
+                                                <span>→</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </motion.div>
