@@ -14,7 +14,7 @@ export default function HomePage() {
 
     const getAvatarColor = (name) => {
         const colors = {
-            'Wicked Wheaties': 'bg-blue-500',
+            'Cereal Killers': 'bg-blue-500',
             'Artificially Intelligent': 'bg-green-500',
             'Falls to the Wall': 'bg-purple-500',
             'Harvest Hustlers': 'bg-pink-500',
@@ -24,7 +24,45 @@ export default function HomePage() {
         return colors[name] || 'bg-gray-500';
     };
 
+    const getMedalInfo = (index, score, allScores) => {
+        // Get unique scores sorted in descending order
+        const uniqueScores = [...new Set(allScores)].sort((a, b) => b - a);
+
+        // Find position of current score in unique scores
+        const position = uniqueScores.indexOf(score);
+
+        if (position === 0) {
+            return {
+                medal: '🥇 Gold',
+                show: true,
+                bgColor: 'bg-amber-50',
+                borderColor: 'border-amber-100'
+            };
+        } else if (position === 1) {
+            return {
+                medal: '🥈 Silver',
+                show: true,
+                bgColor: 'bg-gray-50',
+                borderColor: 'border-gray-200'
+            };
+        } else if (position === 2) {
+            return {
+                medal: '🥉 Bronze',
+                show: true,
+                bgColor: 'bg-orange-50',
+                borderColor: 'border-orange-100'
+            };
+        }
+        return {
+            medal: '',
+            show: false,
+            bgColor: 'bg-white',
+            borderColor: 'border-gray-100'
+        };
+    };
+
     const displayedLeaderboard = showAllPlayers ? leaderboard : leaderboard.slice(0, 5);
+    const allScores = leaderboard.map(player => player.score);
 
     if (!posts.length) {
         return (
@@ -203,35 +241,38 @@ export default function HomePage() {
                                     </div>
 
                                     <div className="space-y-3">
-                                        {displayedLeaderboard.map((player, index) => (
-                                            <motion.div
-                                                key={index}
-                                                initial={{ opacity: 0, x: -20 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: index * 0.1 }}
-                                                className={`flex items-center justify-between p-3 rounded-xl border ${index < 3 ? 'bg-orange-50 border-orange-100' : 'border-gray-100'}`}
-                                            >
-                                                <div className="flex items-center gap-3">
-                                                    <motion.div
-                                                        whileHover={{ scale: 1.05 }}
-                                                        className={`w-8 h-8 rounded-full ${getAvatarColor(player.name)} flex items-center justify-center text-white font-medium shadow-sm`}
-                                                    >
-                                                        {getInitials(player.name)}
-                                                    </motion.div>
-                                                    <div>
-                                                        <p className="font-medium text-gray-900">{player.name}</p>
-                                                        {index < 3 && (
-                                                            <p className="text-xs text-gray-500">
-                                                                {index === 0 ? '🥇 Gold' : index === 1 ? '🥈 Silver' : '🥉 Bronze'}
-                                                            </p>
-                                                        )}
+                                        {displayedLeaderboard.map((player, index) => {
+                                            const medalInfo = getMedalInfo(index, player.score, allScores);
+                                            return (
+                                                <motion.div
+                                                    key={index}
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: index * 0.1 }}
+                                                    className={`flex items-center justify-between p-3 rounded-xl border ${medalInfo.bgColor} ${medalInfo.borderColor}`}
+                                                >
+                                                    <div className="flex items-center gap-3">
+                                                        <motion.div
+                                                            whileHover={{ scale: 1.05 }}
+                                                            className={`w-8 h-8 rounded-full ${getAvatarColor(player.name)} flex items-center justify-center text-white font-medium shadow-sm`}
+                                                        >
+                                                            {getInitials(player.name)}
+                                                        </motion.div>
+                                                        <div>
+                                                            <p className="font-medium text-gray-900">{player.name}</p>
+                                                            {medalInfo.show && (
+                                                                <p className="text-xs text-gray-500">
+                                                                    {medalInfo.medal}
+                                                                </p>
+                                                            )}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="text-lg font-semibold text-[#cc5500]">
-                                                    {player.score}
-                                                </div>
-                                            </motion.div>
-                                        ))}
+                                                    <div className="text-lg font-semibold text-[#cc5500]">
+                                                        {player.score}
+                                                    </div>
+                                                </motion.div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </motion.div>
