@@ -3,10 +3,33 @@ import React, { createContext, useContext, useState } from 'react';
 // Static posts array with both challenges
 const staticPosts = [
     {
+        id: 2,
+        title: 'Day 2: "Halloween Costume Memories" 🎃👻',
+        author: 'Danielle',
+        date: '2024/10/29',
+        difficulty: 'Medium',
+        time: '30 minutes',
+        description: 'Hello, Halloween Enthusiasts!\n\nFor today\'s challenge, each team member will submit an image representing their favorite Halloween costume. This image doesn\'t have to be a personal photo, but personal photos will earn bonus Bravery Points!\n\nEach team member must submit an image, and the team will compile these into a collage, adding a short description of why the chosen costume is their favorite.',
+        notes: [
+            'Keep an eye out—I\'ll be sending out the pumpkin contest survey shortly! You\'ll have until tomorrow, Wednesday, October 30th, by close of business to vote for your favorite pumpkin. Only one vote per person will be allowed, and all responses after the deadline won\'t be counted. The winner will be announced at the happy hour on Friday!'
+        ],
+        requirements: [
+            'Your team\'s name must be included in your submission',
+            'Your team\'s nominated captain must post the collage'
+        ],
+        bonusPoints: [
+            {
+                description: 'Personal photos of your favorite Halloween costumes',
+                points: 5
+            }
+        ],
+        dueTime: '5:00 PM EST'
+    },
+    {
         id: 1,
         title: 'Day 1: "Autumn Adventure Photo Challenge" 📸🍂',
         author: 'Danielle',
-        date: '2024/01/25',
+        date: '2024/10/28',
         difficulty: 'Medium',
         time: '30 minutes',
         description: 'Hello, Scavenger Hunt Teams!\n\nTo kick off our scavenger hunt, each team member will need to find and photograph a unique item that embodies the essence of fall. Once everyone has their photos, the team can work together to compile them into a collage representing your team\'s autumn adventure.',
@@ -24,29 +47,6 @@ const staticPosts = [
             },
             {
                 description: 'Create a unique caption (one per team member)',
-                points: 5
-            }
-        ],
-        dueTime: '5:00 PM EST'
-    },
-    {
-        id: 2,
-        title: 'Day 2: "Halloween Costume Memories" 🎃👻',
-        author: 'Danielle',
-        date: '2024/01/26',
-        difficulty: 'Medium',
-        time: '30 minutes',
-        description: 'Hello, Halloween Enthusiasts!\n\nFor today\'s challenge, each team member will submit an image representing their favorite Halloween costume. This image doesn\'t have to be a personal photo, but personal photos will earn bonus Bravery Points!\n\nEach team member must submit an image, and the team will compile these into a collage, adding a short description of why the chosen costume is their favorite.',
-        notes: [
-            'Keep an eye out—I\'ll be sending out the pumpkin contest survey shortly! You\'ll have until tomorrow, Wednesday, October 30th, by close of business to vote for your favorite pumpkin. Only one vote per person will be allowed, and all responses after the deadline won\'t be counted. The winner will be announced at the happy hour on Friday!'
-        ],
-        requirements: [
-            'Your team\'s name must be included in your submission',
-            'Your team\'s nominated captain must post the collage'
-        ],
-        bonusPoints: [
-            {
-                description: 'Personal photos of your favorite Halloween costumes',
                 points: 5
             }
         ],
