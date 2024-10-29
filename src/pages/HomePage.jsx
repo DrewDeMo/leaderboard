@@ -34,7 +34,7 @@ export default function HomePage() {
         );
     }
 
-    const currentPost = posts[0]; // Always show the first post since we only have one
+    const currentPost = posts[0];
 
     return (
         <div className={`min-h-screen flex flex-col ${isDarkMode ? 'dark' : ''} bg-gray-50`}>
@@ -94,21 +94,49 @@ export default function HomePage() {
                                             </div>
                                         </div>
                                         <p className="text-gray-600 leading-relaxed mb-6">{currentPost.description}</p>
+
+                                        {/* Notes Section */}
+                                        <div className="bg-blue-50 rounded-xl p-5 mb-6 border border-blue-100">
+                                            <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                                <span className="mr-2">📝</span> Notes
+                                            </h3>
+                                            {currentPost.notes.map((note, index) => (
+                                                <p key={index} className="text-gray-600">{note}</p>
+                                            ))}
+                                        </div>
+
+                                        {/* Requirements Section */}
                                         <div className="bg-orange-50 rounded-xl p-5 mb-6 border border-orange-100">
-                                            <h3 className="text-lg font-medium text-gray-900 mb-4">Helpful Tips:</h3>
-                                            <ol className="list-decimal pl-4 space-y-2.5">
-                                                {currentPost.hints.map((hint, index) => (
-                                                    <motion.li
-                                                        key={index}
-                                                        initial={{ opacity: 0, y: 10 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        transition={{ delay: index * 0.1 }}
-                                                        className="text-gray-600 pl-1"
-                                                    >
-                                                        {hint}
-                                                    </motion.li>
+                                            <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                                <span className="mr-2">📋</span> Submission Requirements
+                                            </h3>
+                                            <ul className="list-disc pl-4 space-y-2">
+                                                {currentPost.requirements.map((req, index) => (
+                                                    <li key={index} className="text-gray-600">{req}</li>
                                                 ))}
-                                            </ol>
+                                            </ul>
+                                        </div>
+
+                                        {/* Bonus Points Section */}
+                                        <div className="bg-green-50 rounded-xl p-5 mb-6 border border-green-100">
+                                            <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                                                <span className="mr-2">⭐</span> Bonus Point Opportunities
+                                            </h3>
+                                            <ul className="list-disc pl-4 space-y-2">
+                                                {currentPost.bonusPoints.map((bonus, index) => (
+                                                    <li key={index} className="text-gray-600">
+                                                        {bonus.description} (+{bonus.points} points)
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        {/* Due Time */}
+                                        <div className="bg-gray-50 rounded-xl p-5 border border-gray-100">
+                                            <p className="text-gray-800 font-medium flex items-center">
+                                                <span className="mr-2">⏰</span>
+                                                Submissions are due by {currentPost.dueTime}. Happy snapping! 🍁🌟
+                                            </p>
                                         </div>
                                     </div>
                                 </motion.div>

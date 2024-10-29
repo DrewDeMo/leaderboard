@@ -3,19 +3,30 @@ import React, { createContext, useContext } from 'react';
 // Single static post
 const currentPost = {
     id: 1,
-    title: 'Day 1: Autumn Adventure Photo Challenge',
+    title: 'Day 1: "Autumn Adventure Photo Challenge" 📸🍂',
     author: 'Danielle',
     date: '2024/01/25',
     difficulty: 'Medium',
     time: '30 minutes',
     description: 'Hello, Scavenger Hunt Teams!\n\nTo kick off our scavenger hunt, each team member will need to find and photograph a unique item that embodies the essence of fall. Once everyone has their photos, the team can work together to compile them into a collage representing your team\'s autumn adventure.',
-    hints: [
+    notes: [
+        'I\'ll be sending out the link to the leaderboard later today so you can track your progress throughout the week!'
+    ],
+    requirements: [
         'Ensure your team\'s name is included in your submission',
-        'To receive full points, your team\'s nominated captain must post the collage in the Microsoft Teams General channel',
-        'Include a fun fall fact about one of the items in your collage for an additional 5 points',
-        'Create a unique caption (one per team member) to earn a total of 5 extra points',
-        'Submissions are due by 5:00 PM EST. Happy snapping! 🍁🌟'
-    ]
+        'To receive full points, your team\'s nominated captain must post the collage in the Microsoft Teams General channel'
+    ],
+    bonusPoints: [
+        {
+            description: 'Include a fun fall fact about one of the items in your collage',
+            points: 5
+        },
+        {
+            description: 'Create a unique caption (one per team member)',
+            points: 5
+        }
+    ],
+    dueTime: '5:00 PM EST'
 };
 
 // Static leaderboard
