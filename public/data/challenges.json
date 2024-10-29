@@ -1,0 +1,28 @@
+{
+    "challenges": [
+        {
+            "id": 1,
+            "title": "Halloween Costume Memories Challenge",
+            "emoji": "🎃👻",
+            "description": "Hello, Halloween Enthusiasts!\n\nFor today's challenge, each team member will submit an image representing their favorite Halloween costume. This image doesn't have to be a personal photo, but personal photos will earn bonus Bravery Points!\n\nEach team member must submit an image, and the team will compile these into a collage, adding a short description of why the chosen costume is their favorite.",
+            "requirements": [
+                "Your team's name must be included in your submission",
+                "Your team's nominated captain must post the collage"
+            ],
+            "bonusPoints": [
+                {
+                    "description": "Personal photos of your favorite Halloween costumes",
+                    "points": 5
+                }
+            ],
+            "dueTime": "5:00 PM EST",
+            "basePoints": 10,
+            "maxPoints": 15,
+            "notes": [
+                "Team Captains, rally the troops! It's time to show us your Halloween best! 🧙‍♀️👻",
+                "The pumpkin contest survey will be sent out shortly! You'll have until Wednesday, October 30th, by close of business to vote for your favorite pumpkin. Only one vote per person will be allowed, and all responses after the deadline won't be counted. The winner will be announced at the happy hour on Friday!"
+            ],
+            "status": "active"
+        }
+    ]
+}
