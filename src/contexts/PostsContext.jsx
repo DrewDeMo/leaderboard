@@ -10,7 +10,6 @@ const staticPosts = [
         difficulty: 'Medium',
         time: '30 minutes',
         description: 'Hello, Music Lovers!\n\nToday\'s challenge is all about curating the perfect autumn playlist! Each team member should select a song that reminds them of fall or brings back a special fall memory—like a song played during a Thanksgiving dinner, a cozy autumn gathering, or one that just captures the feeling of the season. Work together to create a cohesive playlist.',
-        notes: [],
         requirements: [
             'Your team\'s name must be included in your submission',
             'Your team\'s nominated captain must post the playlist'
