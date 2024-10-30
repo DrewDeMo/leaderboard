@@ -56,12 +56,12 @@ const staticPosts = [
 
 // Static leaderboard
 const leaderboard = [
-    { id: 4, name: 'Harvest Hustlers', score: 41, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
-    { id: 1, name: 'Cereal Killers', score: 40, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
-    { id: 2, name: 'Artificially Intelligent', score: 40, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
-    { id: 3, name: 'Falls to the Wall', score: 39, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
-    { id: 5, name: 'Not the Droids You\'re Looking For', score: 39, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
-    { id: 6, name: 'Nutmeg Hustlers', score: 34, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
+    { id: 1, name: 'Cereal Killers', score: 125, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
+    { id: 2, name: 'Artificially Intelligent', score: 105, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 5, name: 'Not the Droids You\'re Looking For', score: 123, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
+    { id: 4, name: 'Harvest Hustlers', score: 94, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
+    { id: 3, name: 'Falls to the Wall', score: 73, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
+    { id: 6, name: 'Nutmeg Hustlers', score: 65, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
 ];
 
 const PostsContext = createContext();
