@@ -3,6 +3,31 @@ import React, { createContext, useContext, useState } from 'react';
 // Static posts array with both challenges - newest first
 const staticPosts = [
     {
+        id: 3,
+        title: 'Day 3: "Autumn Playlist Challenge" 🎶🍁',
+        author: 'Danielle',
+        date: '2024/10/30',
+        difficulty: 'Medium',
+        time: '30 minutes',
+        description: 'Hello, Music Lovers!\n\nToday\'s challenge is all about curating the perfect autumn playlist! Each team member should select a song that reminds them of fall or brings back a special fall memory—like a song played during a Thanksgiving dinner, a cozy autumn gathering, or one that just captures the feeling of the season. Work together to create a cohesive playlist.',
+        notes: [],
+        requirements: [
+            'Your team\'s name must be included in your submission',
+            'Your team\'s nominated captain must post the playlist'
+        ],
+        bonusPoints: [
+            {
+                description: 'Include a short description explaining why each song was chosen',
+                points: 5
+            },
+            {
+                description: 'Add a verse or lyric that resonates with one of your chosen songs',
+                points: 5
+            }
+        ],
+        dueTime: '5:00 PM EST'
+    },
+    {
         id: 2,
         title: 'Day 2: "Halloween Costume Memories" 🎃👻',
         author: 'Danielle',
