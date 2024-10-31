@@ -107,8 +107,8 @@ const staticPosts = [
 // Static leaderboard
 // Note: Teams must be ordered by score from highest to lowest
 const leaderboard = [
-    { id: 1, name: 'Cereal Killers', score: 254, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
-    { id: 2, name: 'Artificially Intelligent', score: 244, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 2, name: 'Artificially Intelligent', score: 294, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 1, name: 'Cereal Killers', score: 269, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
     { id: 4, name: 'Harvest Hustlers', score: 223, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
     { id: 3, name: 'Falls to the Wall', score: 218, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
     { id: 5, name: 'Not the Droids You\'re Looking For', score: 211, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
