@@ -3,6 +3,29 @@ import React, { createContext, useContext, useState } from 'react';
 // Static posts array with both challenges - newest first
 const staticPosts = [
     {
+        id: 4,
+        title: 'Day 4: "Autumn Enigma Challenge" 🎃🔍',
+        author: 'Danielle',
+        date: '2024/10/31',
+        difficulty: 'Hard',
+        time: '45 minutes',
+        description: 'Hello, Scavenger Hunt Teams!\n\nToday\'s challenge is the grand finale—a multi-layered puzzle that calls for teamwork and quick thinking! 🧩 Each part of the challenge must be completed before you can move on to the next clue.',
+        notes: [
+            '🔹 Team Captains Only: The team captain should be the only one messaging me for answers, please! Make sure it\'s a direct message here in Teams (you can start a thread with your whole team copied so they can see the clues).\n\n🔹 Patience is Key: I\'ll respond in the order I get your messages. It\'s a busy time of year, and I\'m working too! 👻 So if I don\'t respond immediately, hang tight—I\'ll get back to you as soon as I can!\n\n🔹 Have Fun! After all, it\'s Halloween! 🕸️🧛‍♀️ Enjoy the thrill and challenge of working together.'
+        ],
+        requirements: [
+            'Team captains must submit answers via direct message',
+            'Each riddle must be solved before moving to the next'
+        ],
+        bonusPoints: [
+            {
+                description: 'Solve the first riddle within 10 minutes',
+                points: 10
+            }
+        ],
+        dueTime: '5:00 PM EST'
+    },
+    {
         id: 3,
         title: 'Day 3: "Autumn Playlist Challenge" 🎶🍁',
         author: 'Danielle',
