@@ -105,13 +105,14 @@ const staticPosts = [
 ];
 
 // Static leaderboard
+// Note: Teams must be ordered by score from highest to lowest
 const leaderboard = [
-    { id: 1, name: 'Cereal Killers', score: 190, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
-    { id: 2, name: 'Artificially Intelligent', score: 165, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
-    { id: 5, name: 'Not the Droids You\'re Looking For', score: 158, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
-    { id: 4, name: 'Harvest Hustlers', score: 147, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
-    { id: 3, name: 'Falls to the Wall', score: 110, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
-    { id: 6, name: 'Nutmeg Hustlers', score: 101, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
+    { id: 1, name: 'Cereal Killers', score: 254, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
+    { id: 2, name: 'Artificially Intelligent', score: 244, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 4, name: 'Harvest Hustlers', score: 223, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
+    { id: 3, name: 'Falls to the Wall', score: 218, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
+    { id: 5, name: 'Not the Droids You\'re Looking For', score: 211, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
+    { id: 6, name: 'Nutmeg Hustlers', score: 200, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
 ];
 
 const PostsContext = createContext();
