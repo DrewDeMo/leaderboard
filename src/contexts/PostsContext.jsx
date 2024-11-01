@@ -3,6 +3,19 @@ import React, { createContext, useContext, useState } from 'react';
 // Static posts array with both challenges - newest first
 const staticPosts = [
     {
+        id: 5,
+        title: 'Breakdown',
+        author: 'Danielle',
+        date: '2024/10/31',
+        difficulty: 'Info',
+        time: 'N/A',
+        description: 'Scavenger Hunt Scoring Breakdown 🎉\n\nAs we gear up for the Happy Hour, here\'s a breakdown of the base scoring for each scavenger hunt challenge this week (before any bonus points). Remember, the Pumpkin Decorating Contest is scored separately and is not included in the base points:\n\nDay 1: "Autumn Adventure Photo" Challenge — MAX 45 points\nDay 2: "Halloween Costume Memories" Challenge — MAX 45 points\nDay 3: "Autumn Playlist Challenge" — MAX 40 points\nDay 4: "Autumn Enigma Challenge" — MAX 60 points\n\nAnd here\'s a look at the overall scoring breakdown:\nTotal Possible Base Points (Daily Challenges): 190\nTotal Possible Bonus Points - Asana Challenge: 125\nTotal Possible Happy Hour Game Points: 70\nTotal Possible Fan Favorite Points: 15\nTotal Possible Overall Base Points: 400\n\nPumpkin Decorating Contest Bonus Points:\n🥇 1st Place: 25 bonus points and a special prize!\n🥈 2nd Place: 15 bonus points\n🥉 3rd Place: 10 bonus points\n✨ All participants who didn\'t place in the top 3 will still earn 5 bonus points for joining the fun!\n\nVoting Bonus:\n⭐ Each team has received an additional 10 points for voting since everyone participated!\n\nLet\'s keep up the momentum and finish strong as we prepare for the exciting festivities ahead!',
+        notes: [],
+        requirements: [],
+        bonusPoints: [],
+        dueTime: 'N/A'
+    },
+    {
         id: 4,
         title: 'Day 4: "Autumn Enigma Challenge" 🎃🔍',
         author: 'Danielle',
@@ -107,12 +120,12 @@ const staticPosts = [
 // Static leaderboard
 // Note: Teams must be ordered by score from highest to lowest
 const leaderboard = [
-    { id: 2, name: 'Artificially Intelligent', score: 294, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
-    { id: 1, name: 'Cereal Killers', score: 269, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
-    { id: 4, name: 'Harvest Hustlers', score: 223, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
-    { id: 3, name: 'Falls to the Wall', score: 218, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
-    { id: 5, name: 'Not the Droids You\'re Looking For', score: 211, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
-    { id: 6, name: 'Nutmeg Hustlers', score: 200, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
+    { id: 1, name: 'Cereal Killers', score: 349, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
+    { id: 3, name: 'Falls to the Wall', score: 313, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
+    { id: 2, name: 'Artificially Intelligent', score: 309, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 5, name: 'Not the Droids You\'re Looking For', score: 276, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
+    { id: 6, name: 'Nutmeg Hustlers', score: 235, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] },
+    { id: 4, name: 'Harvest Hustlers', score: 233, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] }
 ];
 
 const PostsContext = createContext();
