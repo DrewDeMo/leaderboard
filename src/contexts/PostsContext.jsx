@@ -9,7 +9,37 @@ const staticPosts = [
         date: '2024/10/31',
         difficulty: 'Info',
         time: 'N/A',
-        description: 'Scavenger Hunt Scoring Breakdown 🎉\n\nAs we gear up for the Happy Hour, here\'s a breakdown of the base scoring for each scavenger hunt challenge this week (before any bonus points). Remember, the Pumpkin Decorating Contest is scored separately and is not included in the base points:\n\nDay 1: "Autumn Adventure Photo" Challenge — MAX 45 points\nDay 2: "Halloween Costume Memories" Challenge — MAX 45 points\nDay 3: "Autumn Playlist Challenge" — MAX 40 points\nDay 4: "Autumn Enigma Challenge" — MAX 60 points\n\nAnd here\'s a look at the overall scoring breakdown:\nTotal Possible Base Points (Daily Challenges): 190\nTotal Possible Bonus Points - Asana Challenge: 125\nTotal Possible Happy Hour Game Points: 70\nTotal Possible Fan Favorite Points: 15\nTotal Possible Overall Base Points: 400\n\nPumpkin Decorating Contest Bonus Points:\n🥇 1st Place: 25 bonus points and a special prize!\n🥈 2nd Place: 15 bonus points\n🥉 3rd Place: 10 bonus points\n✨ All participants who didn\'t place in the top 3 will still earn 5 bonus points for joining the fun!\n\nVoting Bonus:\n⭐ Each team has received an additional 10 points for voting since everyone participated!\n\nLet\'s keep up the momentum and finish strong as we prepare for the exciting festivities ahead!',
+        description: `Scavenger Hunt Scoring Breakdown 🎉
+
+As we gear up for the Happy Hour, here's a breakdown of the base scoring for each scavenger hunt challenge this week (before any bonus points). Remember, the Pumpkin Decorating Contest is scored separately and is not included in the base points:
+
+Daily Challenge Base Points:
+------------------------
+• Day 1: "Autumn Adventure Photo" Challenge — MAX 45 points
+• Day 2: "Halloween Costume Memories" Challenge — MAX 45 points
+• Day 3: "Autumn Playlist Challenge" — MAX 40 points
+• Day 4: "Autumn Enigma Challenge" — MAX 60 points
+
+Overall Scoring Breakdown:
+------------------------
+• Total Possible Base Points (Daily Challenges): 190
+• Total Possible Bonus Points - Asana Challenge: 125
+• Total Possible Happy Hour Game Points: 70
+• Total Possible Fan Favorite Points: 15
+• Total Possible Overall Base Points: 400
+
+Pumpkin Decorating Contest Bonus Points:
+--------------------------------
+🥇 1st Place: 25 bonus points and a special prize!
+🥈 2nd Place: 15 bonus points
+🥉 3rd Place: 10 bonus points
+✨ All participants who didn't place in the top 3 will still earn 5 bonus points for joining the fun!
+
+Voting Bonus:
+------------
+⭐ Each team has received an additional 10 points for voting since everyone participated!
+
+Let's keep up the momentum and finish strong as we prepare for the exciting festivities ahead!`,
         notes: [],
         requirements: [],
         bonusPoints: [],
