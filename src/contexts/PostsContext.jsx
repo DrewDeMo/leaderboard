@@ -3,36 +3,18 @@ import React, { createContext, useContext, useState } from 'react';
 // Static posts array with both challenges - newest first
 const staticPosts = [
     {
-        id: 5,
-        title: 'Breakdown',
-        author: 'Danielle',
-        date: '2024/10/31',
-        difficulty: 'Info',
-        time: 'N/A',
-        description: 'Scavenger Hunt Scoring Breakdown 🎉\n\nAs we gear up for the Happy Hour, here\'s a breakdown of the base scoring for each scavenger hunt challenge this week (before any bonus points). Remember, the Pumpkin Decorating Contest is scored separately and is not included in the base points:\n\nDay 1: "Autumn Adventure Photo" Challenge — MAX 45 points\nDay 2: "Halloween Costume Memories" Challenge — MAX 45 points\nDay 3: "Autumn Playlist Challenge" — MAX 40 points\nDay 4: "Autumn Enigma Challenge" — MAX 60 points\n\nAnd here\'s a look at the overall scoring breakdown:\nTotal Possible Base Points (Daily Challenges): 190\nTotal Possible Bonus Points - Asana Challenge: 125\nTotal Possible Happy Hour Game Points: 70\nTotal Possible Fan Favorite Points: 15\nTotal Possible Overall Base Points: 400\n\nPumpkin Decorating Contest Bonus Points:\n🥇 1st Place: 25 bonus points and a special prize!\n🥈 2nd Place: 15 bonus points\n🥉 3rd Place: 10 bonus points\n✨ All participants who didn\'t place in the top 3 will still earn 5 bonus points for joining the fun!\n\nVoting Bonus:\n⭐ Each team has received an additional 10 points for voting since everyone participated!\n\nLet\'s keep up the momentum and finish strong as we prepare for the exciting festivities ahead!',
-        notes: [],
-        requirements: [],
-        bonusPoints: [],
-        dueTime: 'N/A'
-    },
-    {
         id: 4,
         title: 'Day 4: "Autumn Enigma Challenge" 🎃🔍',
         author: 'Danielle',
         date: '2024/10/31',
         difficulty: 'Hard',
         time: '45 minutes',
-        description: 'Hello, Scavenger Hunt Teams!\n\nToday\'s challenge is the grand finale—a multi-layered puzzle that calls for teamwork and quick thinking! 🧩 Each part of the challenge must be completed before you can move on to the next clue.',
-        notes: [
-            '🔹 Team Captains Only: The team captain should be the only one messaging me for answers, please! Make sure it\'s a direct message here in Teams (you can start a thread with your whole team copied so they can see the clues).\n\n🔹 Patience is Key: I\'ll respond in the order I get your messages. It\'s a busy time of year, and I\'m working too! 👻 So if I don\'t respond immediately, hang tight—I\'ll get back to you as soon as I can!\n\n🔹 Have Fun! After all, it\'s Halloween! 🕸️🧛‍♀️ Enjoy the thrill and challenge of working together.'
-        ],
-        requirements: [
-            'Team captains must submit answers via direct message',
-            'Each riddle must be solved before moving to the next'
-        ],
+        description: 'The grand finale—a multi-layered puzzle that called for teamwork and quick thinking! Teams worked together to solve riddles and unlock the next clues.',
+        notes: [],
+        requirements: ['Team captains submitted answers via direct message'],
         bonusPoints: [
             {
-                description: 'Solve the first riddle within 10 minutes',
+                description: 'Solved the first riddle within 10 minutes',
                 points: 10
             }
         ],
@@ -45,21 +27,12 @@ const staticPosts = [
         date: '2024/10/30',
         difficulty: 'Medium',
         time: '30 minutes',
-        description: 'Hello, Music Lovers!\n\nToday\'s challenge is all about curating the perfect autumn playlist! Each team member should select a song that reminds them of fall or brings back a special fall memory—like a song played during a Thanksgiving dinner, a cozy autumn gathering, or one that just captures the feeling of the season. Work together to create a cohesive playlist.',
-        notes: [
-            '🎃 Last Chance to Vote for Your Favorite Pumpkin! 🌟\nHello, Team!\n\nJust a friendly reminder that today is the last day to vote for your favorite pumpkin!  Please submit your votes by 5 PM EST. Your participation has been amazing, and I appreciate everyone\'s creativity and effort in this contest!\n\nThank you all for making this so much fun!  Let\'s see which pumpkin reigns supreme!\n\nFestively,\nDanielle'
-        ],
-        requirements: [
-            'Your team\'s name must be included in your submission',
-            'Your team\'s nominated captain must post the playlist'
-        ],
+        description: 'Teams curated the perfect autumn playlist with each member selecting a song that reminded them of fall or brought back a special fall memory.',
+        notes: [],
+        requirements: ['Team submissions included song selections and descriptions'],
         bonusPoints: [
             {
-                description: 'Include a short description explaining why each song was chosen',
-                points: 5
-            },
-            {
-                description: 'Add a verse or lyric that resonates with one of your chosen songs',
+                description: 'Included descriptions for song choices',
                 points: 5
             }
         ],
@@ -72,17 +45,12 @@ const staticPosts = [
         date: '2024/10/29',
         difficulty: 'Medium',
         time: '30 minutes',
-        description: 'Hello, Halloween Enthusiasts!\n\nFor today\'s challenge, each team member will submit an image representing their favorite Halloween costume. This image doesn\'t have to be a personal photo, but personal photos will earn bonus Bravery Points!\n\nEach team member must submit an image, and the team will compile these into a collage, adding a short description of why the chosen costume is their favorite.',
-        notes: [
-            'Keep an eye out—I\'ll be sending out the pumpkin contest survey shortly! You\'ll have until tomorrow, Wednesday, October 30th, by close of business to vote for your favorite pumpkin. Only one vote per person will be allowed, and all responses after the deadline won\'t be counted. The winner will be announced at the happy hour on Friday!'
-        ],
-        requirements: [
-            'Your team\'s name must be included in your submission',
-            'Your team\'s nominated captain must post the collage'
-        ],
+        description: 'Teams shared their favorite Halloween costumes, creating a collage of memories and stories that showcased their creativity and spirit.',
+        notes: [],
+        requirements: ['Teams submitted costume collages with descriptions'],
         bonusPoints: [
             {
-                description: 'Personal photos of your favorite Halloween costumes',
+                description: 'Personal photos of Halloween costumes',
                 points: 5
             }
         ],
@@ -95,21 +63,12 @@ const staticPosts = [
         date: '2024/10/28',
         difficulty: 'Medium',
         time: '30 minutes',
-        description: 'Hello, Scavenger Hunt Teams!\n\nTo kick off our scavenger hunt, each team member will need to find and photograph a unique item that embodies the essence of fall. Once everyone has their photos, the team can work together to compile them into a collage representing your team\'s autumn adventure.',
-        notes: [
-            'I\'ll be sending out the link to the leaderboard later today so you can track your progress throughout the week!'
-        ],
-        requirements: [
-            'Ensure your team\'s name is included in your submission',
-            'To receive full points, your team\'s nominated captain must post the collage in the Microsoft Teams General channel'
-        ],
+        description: 'Teams captured the essence of fall through photography, with each member finding and photographing unique autumn items for a team collage.',
+        notes: [],
+        requirements: ['Teams submitted photo collages representing autumn'],
         bonusPoints: [
             {
-                description: 'Include a fun fall fact about one of the items in your collage',
-                points: 5
-            },
-            {
-                description: 'Create a unique caption (one per team member)',
+                description: 'Included fun fall facts about items',
                 points: 5
             }
         ],
@@ -120,12 +79,12 @@ const staticPosts = [
 // Static leaderboard
 // Note: Teams must be ordered by score from highest to lowest
 const leaderboard = [
-    { id: 1, name: 'Cereal Killers', score: 349, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
-    { id: 3, name: 'Falls to the Wall', score: 313, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
-    { id: 2, name: 'Artificially Intelligent', score: 309, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
-    { id: 5, name: 'Not the Droids You\'re Looking For', score: 276, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
-    { id: 6, name: 'Nutmeg Hustlers', score: 235, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] },
-    { id: 4, name: 'Harvest Hustlers', score: 233, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] }
+    { id: 1, name: 'Cereal Killers', score: 379, members: ['Alex', 'Janelle O.', 'Jonathan', 'Larissa', 'Leanne'] },
+    { id: 2, name: 'Artificially Intelligent', score: 369, members: ['Amy', 'Drew', 'Jim', 'Michelle', 'Matt E.'] },
+    { id: 3, name: 'Falls to the Wall', score: 343, members: ['Emilie', 'Craig', 'Janel E.', 'Kate', 'Luis'] },
+    { id: 5, name: 'Not the Droids You\'re Looking For', score: 326, members: ['Lauren O.', 'Lara', 'Nate', 'Meagan', 'Mitch'] },
+    { id: 4, name: 'Harvest Hustlers', score: 243, members: ['James', 'Kari', 'Ciera', 'Mallory', 'Toni'] },
+    { id: 6, name: 'Nutmeg Hustlers', score: 235, members: ['Lauren H.', 'Kevin', 'Shannon', 'Shane', 'Yovo'] }
 ];
 
 const PostsContext = createContext();

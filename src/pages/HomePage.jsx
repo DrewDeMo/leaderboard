@@ -1,11 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePosts } from '../contexts/PostsContext';
 import Logo from '../components/Logo';
+import confetti from 'canvas-confetti';
 
 export default function HomePage() {
     const [isDarkMode, setIsDarkMode] = useState(false);
+    const [showWinner, setShowWinner] = useState(false);
     const { posts, currentPostIndex, setCurrentPostIndex, leaderboard, totalPosts } = usePosts();
+
+    useEffect(() => {
+        // Trigger confetti and winner reveal animation after a short delay
+        const timer = setTimeout(() => {
+            setShowWinner(true);
+            const duration = 3 * 1000;
+            const end = Date.now() + duration;
+
+            const colors = ['#ffd700', '#cc5500', '#ffa500'];
+
+            (function frame() {
+                confetti({
+                    particleCount: 3,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: colors
+                });
+                confetti({
+                    particleCount: 3,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: colors
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const getInitials = (name) => {
         return name.split(' ').map(word => word[0]).join('');
@@ -24,10 +60,7 @@ export default function HomePage() {
     };
 
     const getMedalInfo = (index, score, allScores) => {
-        // Get unique scores sorted in descending order
         const uniqueScores = [...new Set(allScores)].sort((a, b) => b - a);
-
-        // Find position of current score in unique scores
         const position = uniqueScores.indexOf(score);
 
         if (position === 0) {
@@ -71,6 +104,7 @@ export default function HomePage() {
     }
 
     const currentPost = posts[currentPostIndex];
+    const winningTeam = leaderboard[0];
 
     const goToNewerPost = () => {
         if (currentPostIndex > 0) {
@@ -110,6 +144,115 @@ export default function HomePage() {
             {/* Main Content */}
             <main className="flex-grow py-6 sm:py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    {/* Winner Announcement Section */}
+                    <AnimatePresence>
+                        {showWinner && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{
+                                    opacity: 1,
+                                    scale: 1,
+                                    transition: {
+                                        duration: 0.5,
+                                        ease: "easeOut"
+                                    }
+                                }}
+                                className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl shadow-sm border border-amber-100 overflow-hidden mb-8"
+                            >
+                                <div className="p-8 text-center">
+                                    <motion.div
+                                        initial={{ scale: 0 }}
+                                        animate={{
+                                            scale: 1,
+                                            transition: {
+                                                delay: 0.5,
+                                                duration: 0.3,
+                                                type: "spring",
+                                                stiffness: 200
+                                            }
+                                        }}
+                                        className="inline-block mb-4 text-4xl"
+                                    >
+                                        🏆
+                                    </motion.div>
+                                    <motion.h2
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0,
+                                            transition: {
+                                                delay: 0.8,
+                                                duration: 0.5
+                                            }
+                                        }}
+                                        className="text-3xl font-bold text-gray-900 mb-4"
+                                    >
+                                        Congratulations to the Winners!
+                                    </motion.h2>
+                                    <div className="max-w-2xl mx-auto">
+                                        <motion.p
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{
+                                                opacity: 1,
+                                                y: 0,
+                                                transition: {
+                                                    delay: 1.1,
+                                                    duration: 0.5
+                                                }
+                                            }}
+                                            className="text-xl text-gray-700 mb-6"
+                                        >
+                                            <span className="font-bold text-[#cc5500]">{winningTeam.name}</span> has won the
+                                            2024 TCL Fall Scavenger Hunt with an impressive {winningTeam.score} points!
+                                        </motion.p>
+                                        <motion.div
+                                            initial={{ opacity: 0 }}
+                                            animate={{
+                                                opacity: 1,
+                                                transition: {
+                                                    delay: 1.4,
+                                                    duration: 0.5
+                                                }
+                                            }}
+                                            className="flex flex-wrap justify-center gap-2 mb-6"
+                                        >
+                                            {winningTeam.members.map((member, index) => (
+                                                <motion.span
+                                                    key={index}
+                                                    initial={{ scale: 0 }}
+                                                    animate={{
+                                                        scale: 1,
+                                                        transition: {
+                                                            delay: 1.4 + (index * 0.1),
+                                                            type: "spring",
+                                                            stiffness: 200
+                                                        }
+                                                    }}
+                                                    className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800"
+                                                >
+                                                    {member}
+                                                </motion.span>
+                                            ))}
+                                        </motion.div>
+                                        <motion.p
+                                            initial={{ opacity: 0 }}
+                                            animate={{
+                                                opacity: 1,
+                                                transition: {
+                                                    delay: 2,
+                                                    duration: 0.5
+                                                }
+                                            }}
+                                            className="text-gray-600"
+                                        >
+                                            Thank you to all teams for their amazing participation and creativity throughout the hunt!
+                                        </motion.p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div className="lg:col-span-2">
                             <AnimatePresence mode="wait">
@@ -143,20 +286,10 @@ export default function HomePage() {
                                         </div>
                                         <p className="text-gray-600 leading-relaxed mb-6">{currentPost.description}</p>
 
-                                        {/* Notes Section */}
-                                        <div className="bg-blue-50 rounded-xl p-5 mb-6 border border-blue-100">
-                                            <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                                                <span className="mr-2">📝</span> Notes
-                                            </h3>
-                                            {currentPost.notes.map((note, index) => (
-                                                <p key={index} className="text-gray-600">{note}</p>
-                                            ))}
-                                        </div>
-
                                         {/* Requirements Section */}
                                         <div className="bg-orange-50 rounded-xl p-5 mb-6 border border-orange-100">
                                             <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                                                <span className="mr-2">📋</span> Submission Requirements
+                                                <span className="mr-2">📋</span> Challenge Requirements
                                             </h3>
                                             <ul className="list-disc pl-4 space-y-2">
                                                 {currentPost.requirements.map((req, index) => (
@@ -168,7 +301,7 @@ export default function HomePage() {
                                         {/* Bonus Points Section */}
                                         <div className="bg-green-50 rounded-xl p-5 mb-6 border border-green-100">
                                             <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
-                                                <span className="mr-2">⭐</span> Bonus Point Opportunities
+                                                <span className="mr-2">⭐</span> Bonus Points Awarded
                                             </h3>
                                             <ul className="list-disc pl-4 space-y-2">
                                                 {currentPost.bonusPoints.map((bonus, index) => (
@@ -177,14 +310,6 @@ export default function HomePage() {
                                                     </li>
                                                 ))}
                                             </ul>
-                                        </div>
-
-                                        {/* Due Time */}
-                                        <div className="bg-gray-50 rounded-xl p-5 border border-gray-100">
-                                            <p className="text-gray-800 font-medium flex items-center">
-                                                <span className="mr-2">⏰</span>
-                                                Submissions are due by {currentPost.dueTime}. Happy snapping! 🍁🌟
-                                            </p>
                                         </div>
 
                                         {/* Navigation Buttons */}
@@ -198,7 +323,7 @@ export default function HomePage() {
                                                 disabled={currentPostIndex === totalPosts - 1}
                                             >
                                                 <span>←</span>
-                                                <span>Previous Post</span>
+                                                <span>Previous Challenge</span>
                                             </button>
                                             <button
                                                 onClick={goToNewerPost}
@@ -208,7 +333,7 @@ export default function HomePage() {
                                                     }`}
                                                 disabled={currentPostIndex === 0}
                                             >
-                                                <span>Next Post</span>
+                                                <span>Next Challenge</span>
                                                 <span>→</span>
                                             </button>
                                         </div>
@@ -225,7 +350,7 @@ export default function HomePage() {
                             >
                                 <div className="p-6">
                                     <h2 className="text-xl font-bold text-gray-900 flex items-center mb-6">
-                                        <span className="mr-2">🏆</span> Scoreboard
+                                        <span className="mr-2">🏆</span> Final Scoreboard
                                     </h2>
 
                                     <div className="space-y-3">
