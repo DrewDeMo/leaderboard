@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { usePosts } from '../contexts/PostsContext';
 import Logo from '../components/Logo';
 import confetti from 'canvas-confetti';
+import winnerLogo from '../assets/images/logo.png';
 
 export default function HomePage() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -175,13 +176,36 @@ export default function HomePage() {
                                     >
                                         🏆
                                     </motion.div>
+
+                                    {/* Winner Logo */}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{
+                                            opacity: 1,
+                                            scale: 1,
+                                            transition: {
+                                                delay: 0.7,
+                                                duration: 0.5,
+                                                type: "spring",
+                                                stiffness: 200
+                                            }
+                                        }}
+                                        className="flex justify-center mb-6"
+                                    >
+                                        <img
+                                            src={winnerLogo}
+                                            alt="Winner Team Logo"
+                                            className="w-32 h-32 rounded-2xl shadow-lg border-4 border-amber-200 object-cover"
+                                        />
+                                    </motion.div>
+
                                     <motion.h2
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{
                                             opacity: 1,
                                             y: 0,
                                             transition: {
-                                                delay: 0.8,
+                                                delay: 1,
                                                 duration: 0.5
                                             }
                                         }}
@@ -196,13 +220,13 @@ export default function HomePage() {
                                                 opacity: 1,
                                                 y: 0,
                                                 transition: {
-                                                    delay: 1.1,
+                                                    delay: 1.3,
                                                     duration: 0.5
                                                 }
                                             }}
                                             className="text-xl text-gray-700 mb-6"
                                         >
-                                            <span className="font-bold text-[#cc5500]">{winningTeam.name}</span> has won the
+                                            <span className="font-bold text-[#cc5500]">{winningTeam.name}</span> have won the
                                             2024 TCL Fall Scavenger Hunt with an impressive {winningTeam.score} points!
                                         </motion.p>
                                         <motion.div
@@ -210,7 +234,7 @@ export default function HomePage() {
                                             animate={{
                                                 opacity: 1,
                                                 transition: {
-                                                    delay: 1.4,
+                                                    delay: 1.6,
                                                     duration: 0.5
                                                 }
                                             }}
@@ -223,7 +247,7 @@ export default function HomePage() {
                                                     animate={{
                                                         scale: 1,
                                                         transition: {
-                                                            delay: 1.4 + (index * 0.1),
+                                                            delay: 1.6 + (index * 0.1),
                                                             type: "spring",
                                                             stiffness: 200
                                                         }
@@ -239,7 +263,7 @@ export default function HomePage() {
                                             animate={{
                                                 opacity: 1,
                                                 transition: {
-                                                    delay: 2,
+                                                    delay: 2.2,
                                                     duration: 0.5
                                                 }
                                             }}
